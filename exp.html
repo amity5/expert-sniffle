@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My experiment</title>
+    <!-- Load jsPsych library -->
+    <script src="https://unpkg.com/jspsych@7.0.0"></script>
+    <!-- Load the survey-html-form plugin -->
+    <script src="https://unpkg.com/@jspsych/plugin-survey-html-form@7.0.0"></script>
+    <!-- Load jsPsych CSS -->
+    <link href="https://unpkg.com/jspsych@7.0.0/css/jspsych.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <!-- JavaScript to initialize and run the experiment -->
+    <script>
+      const jsPsych = initJsPsych();
+
+      // Array of image file names
+      var images = ['image1.jpg', 'image2.jpg', ...]; // Add your image filenames here
+
+      // Create a timeline
+      var timeline = [];
+
+      // Function to generate a trial for each image
+      function generateTrial(image) {
+        return {
+          type: 'survey-html-form',
+          preamble: `<img src='path/to/images/${image}' />`, // Adjust the path
+          html: '<p>Rate the realism of the image (1: Not Real, 4: Very Real): <input name="rating" type="number" min="1" max="4" required></p>',
+          data: { image: image }
+        };
+      }
+
+      // Add each image trial to the timeline
+      images.forEach(image => {
+        timeline.push(generateTrial(image));
+      });
+
+      // Start the experiment
+      jsPsych.init({
+        timeline: timeline,
+        on_finish: function() {
+          var resultData = jsPsych.data.get().csv();
+          console.log(resultData); // Or send this data to a server
+        }
+      });
+    </script>
+  </body>
+</html>
