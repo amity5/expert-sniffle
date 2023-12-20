@@ -7,7 +7,11 @@
     <!-- Load the survey-html-form plugin -->
     <script src="https://unpkg.com/@jspsych/plugin-survey-html-form@7.0.0"></script>
     <!-- Load jsPsych CSS -->
-    <link href="https://unpkg.com/jspsych@7.0.0/css/jspsych.css" rel="stylesheet" type="text/css" />
+    <link
+      href="https://unpkg.com/jspsych@7.0.0/css/jspsych.css"
+      rel="stylesheet"
+      type="text/css"
+    />
   </head>
   <body>
     <!-- JavaScript to initialize and run the experiment -->
@@ -15,7 +19,99 @@
       const jsPsych = initJsPsych();
 
       // Array of image file names
-      var images = ['image1.jpg', 'image2.jpg', ...]; // Add your image filenames here
+      var images = [
+        "non objects/alarm clock_telephone_1.jpeg",
+        "non objects/alarm clock_telephone_2.jpeg",
+        "non objects/alarm clock_telephone_3.jpeg",
+        "non objects/alarm clock_telephone_4.jpeg",
+        "non objects/alarm clock_telephone_5.jpeg",
+        "non objects/alarm clock_telephone_6.jpeg",
+        "non objects/bird_cat_1.jpeg",
+        "non objects/bird_cat_2.jpeg",
+        "non objects/bird_cat_3.jpeg",
+        "non objects/bird_cat_4.jpeg",
+        "non objects/bottle_brush_1.jpeg",
+        "non objects/bottle_brush_2.jpeg",
+        "non objects/bottle_brush_3.jpeg",
+        "non objects/bottle_brush_4.jpeg",
+        "non objects/bottle_brush_5.jpeg",
+        "non objects/bottle_brush_6.jpeg",
+        "non objects/bus_piano_1.jpeg",
+        "non objects/bus_piano_2.jpeg",
+        "non objects/bus_piano_3.jpeg",
+        "non objects/bus_piano_4.jpeg",
+        "non objects/bus_piano_5.jpeg",
+        "non objects/car_bicycle_1.jpeg",
+        "non objects/car_bicycle_2.jpeg",
+        "non objects/chicken_bird_1.jpeg",
+        "non objects/chicken_bird_2.jpeg",
+        "non objects/chicken_bird_3.jpeg",
+        "non objects/chicken_bird_4.jpeg",
+        "non objects/chicken_bird_5.jpeg",
+        "non objects/chicken_bird_6.jpeg",
+        "non objects/elephant_dress_1.jpeg",
+        "non objects/elephant_dress_2.jpeg",
+        "non objects/elephant_wolf_1.jpeg",
+        "non objects/elephant_wolf_2.jpeg",
+        "non objects/elephant_wolf_3.jpeg",
+        "non objects/elephant_wolf_4.jpeg",
+        "non objects/elephant_wolf_5.jpeg",
+        "non objects/elk_flamingo_1.jpeg",
+        "non objects/elk_flamingo_2.jpeg",
+        "non objects/elk_flamingo_3.jpeg",
+        "non objects/elk_rabbit_1.jpeg",
+        "non objects/elk_rabbit_2.jpeg",
+        "non objects/faucet_hair dryer_1.jpeg",
+        "non objects/faucet_hair dryer_2.jpeg",
+        "non objects/faucet_hair dryer_3.jpeg",
+        "non objects/faucet_hair dryer_4.jpeg",
+        "non objects/fish_horse_1.jpeg",
+        "non objects/fish_horse_2.jpeg",
+        "non objects/fish_horse_3.jpeg",
+        "non objects/fish_horse_4.jpeg",
+        "non objects/fish_horse_5.jpeg",
+        "non objects/fish_horse_6.jpeg",
+        "non objects/guitar_film camera_1.jpeg",
+        "non objects/guitar_film camera_2.jpeg",
+        "non objects/guitar_film camera_3.jpeg",
+        "non objects/guitar_film camera_4.jpeg",
+        "non objects/guitar_megaphone_1.jpeg",
+        "non objects/guitar_piano_1.jpeg",
+        "non objects/guitar_piano_2.jpeg",
+        "non objects/hair brush_hair comb_1.jpeg",
+        "non objects/hair brush_hair comb_2.jpeg",
+        "non objects/hair brush_hair comb_3.jpeg",
+        "non objects/hair brush_hair comb_4.jpeg",
+        "non objects/hair brush_hair comb_5.jpeg",
+        "non objects/hair brush_hair comb_6.jpeg",
+        "non objects/hair brush_hair comb_7.jpeg",
+        "non objects/hand bag_tie_1.jpeg",
+        "non objects/hand bag_tie_2.jpeg",
+        "non objects/hand bag_tie_3.jpeg",
+        "non objects/hand bag_tie_4.jpeg",
+        "non objects/piano_sunbed_1.jpeg",
+        "non objects/piano_sunbed_2.jpeg",
+        "non objects/piano_sunbed_3.jpeg",
+        "non objects/piano_sunbed_4.jpeg",
+        "non objects/piano_sunbed_5.jpeg",
+        "non objects/plane_rifle_1.jpeg",
+        "non objects/plane_rifle_2.jpeg",
+        "non objects/plane_rifle_3.jpeg",
+        "non objects/plane_rifle_4.jpeg",
+        "non objects/scissors_umbrella_1.jpeg",
+        "non objects/scissors_umbrella_2.jpeg",
+        "non objects/shoe_rabbit_1.jpeg",
+        "non objects/shoe_rabbit_2.jpeg",
+        "non objects/shoe_rabbit_3.jpeg",
+        "non objects/shoe_space ship_1.jpeg",
+        "non objects/shoe_space ship_2.jpeg",
+        "non objects/shoe_space ship_3.jpeg",
+        "non objects/shoe_space ship_4.jpeg",
+        "non objects/tea_telephone_1.jpeg",
+        "non objects/tea_telephone_2.jpeg",
+        "non objects/tea_telephone_3.jpeg",
+        "non objects/tea_telephone_4.jpeg",
+      ]; // Add your image filenames here
 
       // Create a timeline
       var timeline = [];
@@ -23,25 +119,32 @@
       // Function to generate a trial for each image
       function generateTrial(image) {
         return {
-          type: 'survey-html-form',
-          preamble: `<img src='path/to/images/${image}' />`, // Adjust the path
+          type: "survey-html-form",
+          preamble: `<img src='https://raw.githubusercontent.com/amity5/expert-sniffle/main/non%20objects/${image}' />`,
           html: '<p>Rate the realism of the image (1: Not Real, 4: Very Real): <input name="rating" type="number" min="1" max="4" required></p>',
-          data: { image: image }
+          data: { image: image },
         };
       }
 
       // Add each image trial to the timeline
-      images.forEach(image => {
+      images.forEach((image) => {
         timeline.push(generateTrial(image));
       });
 
       // Start the experiment
       jsPsych.init({
         timeline: timeline,
-        on_finish: function() {
-          var resultData = jsPsych.data.get().csv();
-          console.log(resultData); // Or send this data to a server
-        }
+        on_finish: function () {
+          var csvData = jsPsych.data.get().csv();
+          var blob = new Blob([csvData], { type: "text/csv" });
+          var url = window.URL.createObjectURL(blob);
+          var a = document.createElement("a");
+          a.href = url;
+          a.download = "experiment_data.csv";
+          document.body.appendChild(a);
+          a.click();
+          window.URL.revokeObjectURL(url);
+        },
       });
     </script>
   </body>
