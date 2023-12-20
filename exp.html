@@ -120,7 +120,7 @@
       function generateTrial(image) {
         return {
           type: "survey-html-form",
-          preamble: `<img src='https://raw.githubusercontent.com/amity5/expert-sniffle/main/non%20objects/${image}' />`,
+          preamble: `<img src='https://raw.githubusercontent.com/amity5/expert-sniffle/main/nonobjects/${image}' />`,
           html: '<p>Rate the realism of the image (1: Not Real, 4: Very Real): <input name="rating" type="number" min="1" max="4" required></p>',
           data: { image: image },
         };
